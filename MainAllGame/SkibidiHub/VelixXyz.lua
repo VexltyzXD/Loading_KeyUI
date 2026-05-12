@@ -636,7 +636,7 @@ UserInputService.InputEnded:Connect(function(input)
 	end
 end)
 --------------------------------------------------
---// ADVANCED WEBHOOK STATUS
+--// VELIX HUB PREMIUM WEBHOOK
 --------------------------------------------------
 
 local HttpService = game:GetService("HttpService")
@@ -650,15 +650,20 @@ local player = Players.LocalPlayer
 --// WEBHOOK
 --------------------------------------------------
 
-local WEBHOOK =
-	"https://discord.com/api/webhooks/1503653902942208091/6a4HVen7vgbeePJJNGNTdlJbbc8CvfIX1czYV0Rp3Y0VHrLy3XlhA8RClN6x5bLlmbSK"
+local WEBHOOK = "WEBHOOK_HERE"
+
+--------------------------------------------------
+--// CONFIG
+--------------------------------------------------
+
+local ScriptVersion = "v6.0"
+local UIType = "Anime Premium UI"
 
 --------------------------------------------------
 --// KEY TIME
 --------------------------------------------------
 
 local KeyExpire = 3600
--- 3600 = 1 giờ
 
 --------------------------------------------------
 --// FORMAT TIME
@@ -670,14 +675,11 @@ local function FormatTime(seconds)
 	local m = math.floor((seconds % 3600) / 60)
 	local s = math.floor(seconds % 60)
 
-	return string.format(
-		"%02d:%02d:%02d",
-		h,m,s
-	)
+	return string.format("%02d:%02d:%02d",h,m,s)
 end
 
 --------------------------------------------------
---// SEND FUNCTION
+--// SEND WEBHOOK
 --------------------------------------------------
 
 local function SendWebhook()
@@ -702,24 +704,44 @@ local function SendWebhook()
 		and identifyexecutor()
 		or "Roblox"
 
+	local RealTime =
+		os.date("%H:%M:%S")
+
+	local message =
+
+"# Velix Hub ( Premium )\n"..
+
+"**Hello - This is a message from the bot. Please do not chat or reply.**\n"..
+
+"Notify Script\n\n"..
+
+"```yaml\n"..
+
+"Velix Notify VIP User\n\n"..
+
+"👤 USER : "..player.Name.."\n\n"..
+
+"🎮 GAME : "..gameName.."\n\n"..
+
+"📱 DEVICE : "..device.."\n\n"..
+
+"💻 CLIENT : "..client.."\n\n"..
+
+"🎨 UI TYPE : "..UIType.."\n\n"..
+
+"📦 SCRIPT VERSION : "..ScriptVersion.."\n\n"..
+
+"🕒 REAL TIME : "..RealTime.."\n\n"..
+
+"⏳ KEY TIME LEFT : "..FormatTime(KeyExpire).."\n\n"..
+
+"📡 STATUS : ONLINE\n"..
+
+"```"
+
 	local data = {
 
-		["content"] = [[
-🔥 USER OPENED PREMIUM UI
-
-👤 USER : ]]..player.Name..[[
-
-🎮 GAME : ]]..gameName..[[
-
-📱 DEVICE : ]]..device..[[
-
-💻 CLIENT : ]]..client..[[
-
-⏳ KEY TIME LEFT : ]]..
-FormatTime(KeyExpire)..[[
-
-📡 STATUS : ONLINE
-]]
+		["content"] = message
 	}
 
 	local json =
