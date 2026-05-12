@@ -635,30 +635,114 @@ UserInputService.InputEnded:Connect(function(input)
 		dragging = false
 	end
 end)
---// WEBHOOK FILE
+--------------------------------------------------
+--// ADVANCED WEBHOOK STATUS
+--------------------------------------------------
 
 local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+local MarketplaceService = game:GetService("MarketplaceService")
+local UserInputService = game:GetService("UserInputService")
 
-local module = {}
+local player = Players.LocalPlayer
 
-module.Webhook = "https://discord.com/api/webhooks/1503653902942208091/6a4HVen7vgbeePJJNGNTdlJbbc8CvfIX1czYV0Rp3Y0VHrLy3XlhA8RClN6x5bLlmbSK"
+--------------------------------------------------
+--// WEBHOOK
+--------------------------------------------------
 
-function module:Send(msg)
+local WEBHOOK =
+	"WEBHOOK_HERE"
+
+--------------------------------------------------
+--// KEY TIME
+--------------------------------------------------
+
+local KeyExpire = 3600
+-- 3600 = 1 giờ
+
+--------------------------------------------------
+--// FORMAT TIME
+--------------------------------------------------
+
+local function FormatTime(seconds)
+
+	local h = math.floor(seconds / 3600)
+	local m = math.floor((seconds % 3600) / 60)
+	local s = math.floor(seconds % 60)
+
+	return string.format(
+		"%02d:%02d:%02d",
+		h,m,s
+	)
+end
+
+--------------------------------------------------
+--// SEND FUNCTION
+--------------------------------------------------
+
+local function SendWebhook()
+
+	local gameName = "Unknown"
+
+	pcall(function()
+
+		gameName =
+			MarketplaceService:GetProductInfo(
+				game.PlaceId
+			).Name
+	end)
+
+	local device =
+		UserInputService.TouchEnabled
+		and "Mobile"
+		or "PC"
+
+	local client =
+		identifyexecutor
+		and identifyexecutor()
+		or "Roblox"
 
 	local data = {
-		["content"] = msg
+
+		["content"] = [[
+🔥 USER OPENED PREMIUM UI
+
+👤 USER : ]]..player.Name..[[
+
+🎮 GAME : ]]..gameName..[[
+
+📱 DEVICE : ]]..device..[[
+
+💻 CLIENT : ]]..client..[[
+
+⏳ KEY TIME LEFT : ]]..
+FormatTime(KeyExpire)..[[
+
+📡 STATUS : ONLINE
+]]
 	}
 
-	local json = HttpService:JSONEncode(data)
+	local json =
+		HttpService:JSONEncode(data)
 
 	request({
-		Url = self.Webhook,
+
+		Url = WEBHOOK,
+
 		Method = "POST",
+
 		Headers = {
-			["Content-Type"] = "application/json"
+
+			["Content-Type"] =
+				"application/json"
 		},
+
 		Body = json
 	})
 end
 
-return module
+--------------------------------------------------
+--// SEND
+--------------------------------------------------
+
+SendWebhook()
