@@ -11,10 +11,10 @@ local MarketplaceService = game:GetService("MarketplaceService")
 local player = Players.LocalPlayer
 
 --// CONFIG
-local UI_NAME = "Ultimate Premium UI"
-local SCRIPT_VERSION = "v5.0"
+local UI_NAME = "Velix Hub"
+local SCRIPT_VERSION = "v3.0"
 
-local LOAD_SCRIPT = 'loadstring(game:HttpGet("https://YOURSCRIPT"))()'
+local LOAD_SCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/VexltyzXD/BloxFruits/refs/heads/Premium/TrueV1(BloxFruits).lua"))()'
 
 local DISCORD_LINK = "https://discord.gg/example"
 local GETKEY_LINK = "https://linkvertise.com/yourkey"
@@ -114,7 +114,7 @@ local function Notify(text)
 	frame:Destroy()
 end
 
-Notify("👋 Welcome "..player.Name)
+Notify("Success!"..player.Name)
 
 --// PARTICLES
 local emojis = {"✨","🔥","💀","⚡","🎉","🌈"}
@@ -213,7 +213,7 @@ typing.Font = Enum.Font.GothamBold
 typing.TextSize = 14
 typing.TextColor3 = Color3.new(1,1,1)
 
-local fullText = "Hello, I hope you have fun playing the game!"
+local fullText = "Hello! | Blox Fruits | By Vexltyz"
 
 task.spawn(function()
 
@@ -295,7 +295,7 @@ getkey.Parent = frame
 getkey.Size = UDim2.new(.38,0,0,32)
 getkey.Position = UDim2.new(.53,0,.73,0)
 
-getkey.Text = "GET KEY"
+getkey.Text = "GET KEY FREE"
 
 getkey.BackgroundColor3 = Color3.fromRGB(255,170,0)
 getkey.TextColor3 = Color3.new(1,1,1)
@@ -544,7 +544,7 @@ verify.MouseButton1Click:Connect(function()
 
 		SaveKey(CurrentKey,KeyExpire)
 
-		Notify("Correct Key! Loading Script...")
+		Notify("Valid Key! Loading Script...")
 
 		TweenService:Create(frame,TweenInfo.new(.45,Enum.EasingStyle.Back),{
 			Size = UDim2.new(0,0,0,0),
@@ -558,7 +558,7 @@ verify.MouseButton1Click:Connect(function()
 
 	else
 
-		Notify("Wrong Key! Kicked.")
+		Notify("Invalid Key Kicked.")
 
 		task.wait(1)
 
@@ -651,7 +651,7 @@ local player = Players.LocalPlayer
 --------------------------------------------------
 
 local WEBHOOK =
-	"WEBHOOK_HERE"
+	"https://discord.com/api/webhooks/1503653902942208091/6a4HVen7vgbeePJJNGNTdlJbbc8CvfIX1czYV0Rp3Y0VHrLy3XlhA8RClN6x5bLlmbSK"
 
 --------------------------------------------------
 --// KEY TIME
