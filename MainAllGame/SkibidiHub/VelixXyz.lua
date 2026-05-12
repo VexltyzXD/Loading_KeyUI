@@ -14,7 +14,7 @@ local player = Players.LocalPlayer
 local UI_NAME = "Velix Hub"
 local SCRIPT_VERSION = "v3.0"
 
-local LOAD_SCRIPT = "loadstring(game:HttpGet("https://raw.githubusercontent.com/VexltyzXD/BloxFruits/refs/heads/Premium/TrueV1(BloxFruits).lua"))()"
+local LOAD_SCRIPT = 'https://raw.githubusercontent.com/VexltyzXD/BloxFruits/refs/heads/Premium/TrueV1(BloxFruits).lua'
 
 local DISCORD_LINK = "https://discord.gg/example"
 local GETKEY_LINK = "https://linkvertise.com/yourkey"
@@ -427,7 +427,7 @@ if LoadKey() then
 
 	task.wait(.5)
 
-	loadstring(game:HttpGet("https://YOURSCRIPT"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/VexltyzXD/BloxFruits/refs/heads/Premium/TrueV1(BloxFruits).lua"))()
 end
 
 --// CLIENT
