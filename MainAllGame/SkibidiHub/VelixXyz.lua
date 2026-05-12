@@ -635,3 +635,30 @@ UserInputService.InputEnded:Connect(function(input)
 		dragging = false
 	end
 end)
+--// WEBHOOK FILE
+
+local HttpService = game:GetService("HttpService")
+
+local module = {}
+
+module.Webhook = "https://discord.com/api/webhooks/1503653902942208091/6a4HVen7vgbeePJJNGNTdlJbbc8CvfIX1czYV0Rp3Y0VHrLy3XlhA8RClN6x5bLlmbSK"
+
+function module:Send(msg)
+
+	local data = {
+		["content"] = msg
+	}
+
+	local json = HttpService:JSONEncode(data)
+
+	request({
+		Url = self.Webhook,
+		Method = "POST",
+		Headers = {
+			["Content-Type"] = "application/json"
+		},
+		Body = json
+	})
+end
+
+return module
