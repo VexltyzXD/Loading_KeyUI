@@ -650,14 +650,14 @@ local player = Players.LocalPlayer
 --// WEBHOOK
 --------------------------------------------------
 
-local WEBHOOK = "WEBHOOK_HERE"
+local WEBHOOK = "https://discord.com/api/webhooks/1503653902942208091/6a4HVen7vgbeePJJNGNTdlJbbc8CvfIX1czYV0Rp3Y0VHrLy3XlhA8RClN6x5bLlmbSK"
 
 --------------------------------------------------
 --// CONFIG
 --------------------------------------------------
 
-local ScriptVersion = "v6.0"
-local UIType = "Anime Premium UI"
+local ScriptVersion = "v2.0"
+local UIType = "Velix Hub Premium"
 
 --------------------------------------------------
 --// KEY TIME
